@@ -4,8 +4,14 @@ import { MyButton } from './MyButton';
 class App extends React.Component {
   render() {
     return (
-      <MyButton></MyButton>
+      <MyButton
+        buttonName='Click here'
+        handleButtonClick={this.handleClick}
+      ></MyButton>
     )
+  }
+  handleClick() {
+    console.log(`App handling the click , youh!`)
   }
 }
 
