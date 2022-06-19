@@ -3,21 +3,35 @@ import './App.css';
 import { MyButton } from './MyButton';
 
 export interface IAppProps {};
-class App extends React.Component<IAppProps> {
+export interface IAppState {
+  showDetails: boolean;
+}
+class App extends React.Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props);
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      showDetails: false
+    }
   }
   render() {
     return (
-      <MyButton
-        buttonName='Click here'
-        handleButtonClick={this.handleClick}
-      ></MyButton>
+      <div>
+        <p>showDetails = {this.state.showDetails ? "true" : "false"}
+        </p>
+        <MyButton
+          buttonName='Click here'
+          handleButtonClick={this.handleClick}
+        ></MyButton>
+      </div>
+
     )
   }
   handleClick() {
-    console.log(`App handling the click , youh!`)
+    console.log(`App handling the click , youh!`);
+    this.setState({
+      showDetails: !this.state.showDetails
+    })
   }
 }
 
