@@ -1,7 +1,13 @@
 import React from 'react';
 import './App.css';
 import { MyButton } from './MyButton';
-class App extends React.Component {
+
+export interface IAppProps {};
+class App extends React.Component<IAppProps> {
+  constructor(props: IAppProps) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this)
+  }
   render() {
     return (
       <MyButton

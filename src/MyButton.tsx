@@ -6,6 +6,10 @@ export interface IMyButtonProps {
     handleButtonClick(): void;
 }
 export class MyButton extends React.Component<IMyButtonProps> {
+    constructor(props: IMyButtonProps) {
+        super(props);
+        this.onButtonClicked = this.onButtonClicked.bind(this)
+    }
     render () {
         return (
             <Button color="primary"
@@ -13,5 +17,9 @@ export class MyButton extends React.Component<IMyButtonProps> {
                 {this.props.buttonName}
             </Button>
         )
+    }
+    onButtonClicked() {
+        console.log(`MyButton.onButtonClicked() called`);
+        this.props.handleButtonClick();
     }
 }
